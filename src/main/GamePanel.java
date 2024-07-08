@@ -1,3 +1,7 @@
+package main;
+
+import tile.TileManager;
+
 import javax.swing.JPanel;
 import java.awt.*;
 
@@ -5,11 +9,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     // SCREEN SETTINGS
     final int originalTileSize = 16;
-    final int scale = 3;
+    final int scale = 8;
 
-    final int tileSize = originalTileSize * scale;
-    final int maxScreenCol = 16;
-    final int getMaxScreenRow = 12;
+    public final int tileSize = originalTileSize * scale;
+    public final int maxScreenCol = 5;
+    public final int getMaxScreenRow = 5;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * getMaxScreenRow;
 
@@ -18,14 +22,15 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
+    TileManager tileM = new TileManager(this);
 
-    int px = 100;
-    int py = 100;
+    int playerX = 100;
+    int playerY = 100;
     int pSpeed = 4;
 
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.GREEN);
+        this.setBackground(Color.GRAY);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
         this.setFocusable(true);
@@ -62,13 +67,13 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update(){
         if(keyH.upPressed) {
-            py -= pSpeed;
+            playerY -= pSpeed;
         } else if(keyH.downPressed){
-            py += pSpeed;
+            playerY += pSpeed;
         } else if(keyH.leftPressed){
-            px -= pSpeed;
+            playerX -= pSpeed;
         } else if(keyH.rightPressed){
-            px += pSpeed;
+            playerX += pSpeed;
         }
     }
 
@@ -76,8 +81,12 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(Color.white);
-        g2.fillRect(px,py,tileSize,tileSize);
-        g2.dispose();
+
+        tileM.draw(g2);
+
+//        g2.setColor(Color.white);
+//        g2.fillRect(playerX, playerY,tileSize,tileSize);
+//        g2.dispose();
+
     }
 }
