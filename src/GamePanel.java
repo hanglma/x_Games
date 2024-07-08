@@ -18,6 +18,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
+    MouseHandler mouseH = new MouseHandler();
 
     int px = 100;
     int py = 100;
@@ -28,6 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setBackground(Color.GREEN);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
+        this.addMouseListener(mouseH);
         this.setFocusable(true);
     }
 
