@@ -4,6 +4,7 @@ import tile.TileManager;
 
 import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -22,17 +23,17 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread gameThread;
     KeyHandler keyH = new KeyHandler();
+    MouseHandler mouseH = new MouseHandler();
     TileManager tileM = new TileManager(this);
+    GameLogic gameL = new GameLogic();
 
-    int playerX = 100;
-    int playerY = 100;
-    int pSpeed = 4;
 
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.GRAY);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyH);
+        this.addMouseListener(mouseH);
         this.setFocusable(true);
     }
 
@@ -65,16 +66,32 @@ public class GamePanel extends JPanel implements Runnable {
         }
     }
 
+    int currentPlayer = 1;
+    MouseEvent lastMouseEvent = null;
+    MouseEvent currentMouseEvent;
+
     public void update(){
-        if(keyH.upPressed) {
-            playerY -= pSpeed;
-        } else if(keyH.downPressed){
-            playerY += pSpeed;
-        } else if(keyH.leftPressed){
-            playerX -= pSpeed;
-        } else if(keyH.rightPressed){
-            playerX += pSpeed;
+
+        currentMouseEvent = mouseH.mouseClicked;
+
+        if(currentMouseEvent != null && currentMouseEvent != lastMouseEvent){
+
+            MouseEvent mouseE = mouseH.mouseClicked;
+            Point tilePoint = cordsToTile(mouseE.getX(),mouseE.getY());
+            if(gameL.feld[tilePoint.x][tilePoint.y] != 0){
+                tileM.mapTileNum[tilePoint.x][tilePoint.y] = currentPlayer + 0;
+                gameL.feld[tilePoint.x][tilePoint.y] = currentPlayer;
+
+                if(currentPlayer == 1){
+                    currentPlayer++;
+                } else{
+                    currentPlayer--;
+                }
+            }
+
+            lastMouseEvent = currentMouseEvent;
         }
+        gameL.gewonnen();
     }
 
     public void paintComponent(Graphics g){
@@ -87,6 +104,11 @@ public class GamePanel extends JPanel implements Runnable {
 //        g2.setColor(Color.white);
 //        g2.fillRect(playerX, playerY,tileSize,tileSize);
 //        g2.dispose();
+    }
 
+    public Point cordsToTile(int x, int y){
+        int tileX = Math.floorDiv(x, tileSize);
+        int tileY = Math.floorDiv(y, tileSize);
+        return new Point(tileX,tileY);
     }
 }

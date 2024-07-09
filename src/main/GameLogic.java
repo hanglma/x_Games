@@ -1,7 +1,11 @@
-import java.util.Objects;
+package main;
 
 public class GameLogic
 {
+    public GameLogic(){
+
+    }
+
     private int counter=0;
     public int getCounter()
     {
@@ -12,19 +16,19 @@ public class GameLogic
         counter=i;
     }
 
-    // e=empty,also leer; x=X;c=0
+    // 0 = empty,also leer; 1 = X; 2 = O
 
-    private String[][] feld = {{"e","e","e"},{"e","e","e"},{"e","e","e"}};
-    public void check(String a,String b,String c)
+    public final int[][] feld = {{0,0,0},{0,0,0},{0,0,0}};
+
+    public int check(int a,int b,int c)
     {
-        if (Objects.equals(a,b) && Objects.equals(a,c))
-        {
-            System.out.println(a + " hat gewonnen");
+        if (a == b && a == c && a != 0) {
+            return a;
         }
-        else if (counter==9)
-        {
-            System.out.println("Unentschieden");
+        else if (counter == 9) {
+            return 3;
         }
+        return 0;
 
     }
     public void gewonnen()
@@ -37,7 +41,5 @@ public class GameLogic
         check(feld[0][2],feld[1][2],feld[2][2]);
         check(feld[0][0],feld[1][1],feld[2][2]);
         check(feld[0][2],feld[1][1],feld[0][2]);
-
     }
-
 }
