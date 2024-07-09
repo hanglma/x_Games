@@ -6,23 +6,21 @@ public class Spielfigur
     public int nummer;
     public int positionFeld;
     public int positionFarbe;
-    public String bereich; //ob im Haus, auf dem Feld oder im Ziel
     public boolean schlagbar;
 
     public Spielfigur()
     {
-        this.bereich = "imHaus";
         this.schlagbar = true;
     }
 
 
     public Spielfigur(String farbe, int nummer, int positionFeld, int positionFarbe)
     {
-        this.bereich= "imHaus";
         this.farbe = farbe;
         this.nummer = nummer;
         this.positionFeld = positionFeld;
         this.positionFarbe = positionFarbe;
+        this.schlagbar = true;
     }
 
 
@@ -46,7 +44,7 @@ public class Spielfigur
             }
         else
             {
-                schlagbar = false;
+               schlagbar = false;
             }
 
     }
