@@ -1,16 +1,31 @@
+import java.util.Objects;
+
 public class GameLogic
 {
+    private int counter=0;
+    public int getCounter()
+    {
+        return counter;
+    }
+    public void setCounter(int i)
+    {
+        counter=i;
+    }
+
     // e=empty,also leer; x=X;c=0
+
     private String[][] feld = {{"e","e","e"},{"e","e","e"},{"e","e","e"}};
-    public void check(String a,String b,String c) {
-        if ( a=="x" &&  b=="x" &&  c=="x")
+    public void check(String a,String b,String c)
+    {
+        if (Objects.equals(a,b) && Objects.equals(a,c))
         {
-            System.out.println("X hat gewonnen");
+            System.out.println(a + " hat gewonnen");
         }
-        else if ( a=="c" &&  b=="c" &&  c=="c")
+        else if (counter==9)
         {
-            System.out.println("0 hat gewonnen");
+            System.out.println("Unentschieden");
         }
+
     }
     public void gewonnen()
     {
@@ -22,6 +37,7 @@ public class GameLogic
         check(feld[0][2],feld[1][2],feld[2][2]);
         check(feld[0][0],feld[1][1],feld[2][2]);
         check(feld[0][2],feld[1][1],feld[0][2]);
+
     }
 
 }
