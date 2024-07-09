@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
     GameLogic gameL = new GameLogic();
 
 
-    public GamePanel(){
+    public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.GRAY);
         this.setDoubleBuffered(true);
@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
     }
 
-    public void startGameThread(){
+    public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
     }
@@ -46,19 +46,19 @@ public class GamePanel extends JPanel implements Runnable {
     public void run() {
 
         // Game loop
-        double drawInterval = (double) 1000000000 /FPS;
+        double drawInterval = (double) 1000000000 / FPS;
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
 
-        while(gameThread != null){
+        while (gameThread != null) {
 
             currentTime = System.nanoTime();
             delta += (currentTime - lastTime) / drawInterval;
             lastTime = currentTime;
 
             // only activates every 60 times per second
-            if(delta > 1){
+            if (delta > 1) {
                 update();
                 repaint();
                 delta--;
@@ -69,46 +69,73 @@ public class GamePanel extends JPanel implements Runnable {
     int currentPlayer = 1;
     MouseEvent lastMouseEvent = null;
     MouseEvent currentMouseEvent;
+    int gameFinish = 0;
 
-    public void update(){
+    public void update() {
 
         currentMouseEvent = mouseH.mouseClicked;
 
-        if(currentMouseEvent != null && currentMouseEvent != lastMouseEvent){
+        if (currentMouseEvent != null && currentMouseEvent != lastMouseEvent) {
 
             MouseEvent mouseE = mouseH.mouseClicked;
-            Point tilePoint = cordsToTile(mouseE.getX(),mouseE.getY());
-            if(gameL.feld[tilePoint.x][tilePoint.y] != 0){
-                tileM.mapTileNum[tilePoint.x][tilePoint.y] = currentPlayer + 0;
-                gameL.feld[tilePoint.x][tilePoint.y] = currentPlayer;
+            Point tilePoint = cordsToTile(mouseE.getX(), mouseE.getY());
+            int curTileNum = tileM.mapTileNum[tilePoint.x][tilePoint.y];
+            int curFeldNum = gameL.board[tilePoint.x - 1][tilePoint.y - 1];
 
-                if(currentPlayer == 1){
-                    currentPlayer++;
-                } else{
-                    currentPlayer--;
-                }
+            System.out.println("Tile at " + tilePoint.x + ", " + tilePoint.y + " wurde geklickt!");
+
+            if (curFeldNum == 0 && tilePoint.x != 0 && tilePoint.x != 5 && tilePoint.y != 0 && tilePoint.y != 5) {
+                tileM.mapTileNum[tilePoint.x][tilePoint.y] = curTileNum + currentPlayer;
+                gameL.board[tilePoint.x - 1][tilePoint.y - 1] = currentPlayer;
+
+                System.out.println("Tile at " + tilePoint.x + "|" + tilePoint.y + " wurde geklickt!");
+            }
+            gameL.stepUpCounter();
+            lastMouseEvent = currentMouseEvent;
+
+            if(gameL.hasWinner()){
+                System.out.println(currentPlayer + " won the game ;)");
+                gameFinish = currentPlayer;
+            } else if (gameL.getCounter() == 9) {
+                gameFinish = 3;
+                System.out.println("Unentschieden :)");
             }
 
-            lastMouseEvent = currentMouseEvent;
+            if (currentPlayer == 1) {
+                currentPlayer++;
+            } else {
+                currentPlayer--;
+            }
         }
-        gameL.gewonnen();
     }
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        Graphics2D g2 = (Graphics2D)g;
-
-        tileM.draw(g2);
-
-//        g2.setColor(Color.white);
-//        g2.fillRect(playerX, playerY,tileSize,tileSize);
-//        g2.dispose();
+        Graphics2D g2 = (Graphics2D) g;
+        switch (gameFinish){
+            case 0:
+                tileM.draw(g2);
+                // System.out.println("running ...");
+                break;
+            case 1:
+                setBackground(Color.RED);
+                // System.out.println("red");
+                break;
+            case 2:
+                setBackground(Color.blue);
+                // System.out.println("blue");
+                break;
+            case 3:
+                setBackground(Color.GRAY);
+                // System.out.println("----");
+                break;
+        }
     }
 
-    public Point cordsToTile(int x, int y){
+    public Point cordsToTile(int x, int y) {
         int tileX = Math.floorDiv(x, tileSize);
         int tileY = Math.floorDiv(y, tileSize);
-        return new Point(tileX,tileY);
+        return new Point(tileX, tileY);
     }
 }

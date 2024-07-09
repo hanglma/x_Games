@@ -8,17 +8,48 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Objects;
+import java.nio.file.*;
 
 public class TileManager {
     GamePanel gp;
-    Tile[] tile;
+    Tile[] tiles;
     public int[][] mapTileNum;
+
+    String[] imagePaths = {
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\Leer.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\LO.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\LOr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\LOb.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\LM.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\LMr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\LMb.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\LU.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\LUr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\LUb.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\MO.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\MOr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\MOb.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\MM.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\MMr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\MMb.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\MU.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\MUr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\MUb.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\RO.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\ROr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\ROb.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\RM.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\RMr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\RMb.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\RU.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\RUr.png",
+            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\RUb.png"
+    };
 
     public TileManager(GamePanel gp) {
         this.gp = gp;
 
-        tile = new Tile[100];
+        tiles = new Tile[imagePaths.length];
         mapTileNum = new int[gp.maxScreenCol][gp.getMaxScreenRow];
 
         getTileImage();
@@ -26,42 +57,36 @@ public class TileManager {
     }
 
     public void getTileImage(){
-        try {
+        for (int i = 0; i < imagePaths.length; i++) {
+            // Initialize the Tile object
+            tiles[i] = new Tile();
 
-            tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("Leer.png"));
+            // Define the path to the current image
+            Path imagePath = Paths.get(imagePaths[i]);
 
-            tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("LO.png"));
+            // Print the absolute path for debugging
+            System.out.println("Image path: " + imagePath.toAbsolutePath());
 
-            tile[4] = new Tile();
-            tile[4].image = ImageIO.read(getClass().getResourceAsStream("MO.png"));
+            // Check if the file exists and is readable
+            if (Files.exists(imagePath) && Files.isReadable(imagePath)) {
+                try {
+                    // Read the image from the path
+                    tiles[i].image = ImageIO.read(imagePath.toFile());
 
-            tile[7] = new Tile();
-            tile[7].image = ImageIO.read(getClass().getResourceAsStream("RO.png"));
-
-            tile[10] = new Tile();
-            tile[10].image = ImageIO.read(getClass().getResourceAsStream("LM.png"));
-
-            tile[13] = new Tile();
-            tile[13].image = ImageIO.read(getClass().getResourceAsStream("MM.png"));
-
-            tile[16] = new Tile();
-            tile[16].image = ImageIO.read(getClass().getResourceAsStream("RM.png"));
-
-            tile[19] = new Tile();
-            tile[19].image = ImageIO.read(getClass().getResourceAsStream("LU.png"));
-
-            tile[22] = new Tile();
-            tile[22].image = ImageIO.read(getClass().getResourceAsStream("MU.png"));
-
-            tile[25] = new Tile();
-            tile[25].image = ImageIO.read(getClass().getResourceAsStream("RU.png"));
-
-        } catch (IOException e) {
-            e.printStackTrace();
+                    if (tiles[i].image != null) {
+                        System.out.println("Image " + (i + 1) + " loaded successfully!");
+                    } else {
+                        System.out.println("Failed to load image " + (i + 1) + ". The file may not be a valid image.");
+                    }
+                } catch (IOException e) {
+                    System.err.println("Error reading image file " + (i + 1) + ": " + e.getMessage());
+                }
+            } else {
+                System.err.println("File does not exist or is not readable: " + imagePath.toAbsolutePath());
+            }
         }
     }
+
 
     public void loadMap(){
 
@@ -104,7 +129,7 @@ public class TileManager {
 
             int tileNum = mapTileNum[col][row];
 
-            g2.drawImage(tile[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
+            g2.drawImage(tiles[tileNum].image, x, y, gp.tileSize, gp.tileSize, null);
             col++;
             x += gp.tileSize;
             if(col == gp.maxScreenCol){
