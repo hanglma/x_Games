@@ -73,38 +73,41 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void update() {
 
-        currentMouseEvent = mouseH.mouseClicked;
+        if(gameFinish == 0) {
 
-        if (currentMouseEvent != null && currentMouseEvent != lastMouseEvent) {
+            currentMouseEvent = mouseH.mouseClicked;
 
-            MouseEvent mouseE = mouseH.mouseClicked;
-            Point tilePoint = cordsToTile(mouseE.getX(), mouseE.getY());
-            int curTileNum = tileM.mapTileNum[tilePoint.x][tilePoint.y];
-            int curFeldNum = gameL.board[tilePoint.x - 1][tilePoint.y - 1];
+            if (currentMouseEvent != null && currentMouseEvent != lastMouseEvent) {
 
-            System.out.println("Tile at " + tilePoint.x + ", " + tilePoint.y + " wurde geklickt!");
+                MouseEvent mouseE = mouseH.mouseClicked;
+                Point tilePoint = cordsToTile(mouseE.getX(), mouseE.getY());
+                int curTileNum = tileM.mapTileNum[tilePoint.x][tilePoint.y];
 
-            if (curFeldNum == 0 && tilePoint.x != 0 && tilePoint.x != 5 && tilePoint.y != 0 && tilePoint.y != 5) {
-                tileM.mapTileNum[tilePoint.x][tilePoint.y] = curTileNum + currentPlayer;
-                gameL.board[tilePoint.x - 1][tilePoint.y - 1] = currentPlayer;
+                // System.out.println("Tile at " + tilePoint.x + ", " + tilePoint.y + " wurde geklickt!");
 
-                System.out.println("Tile at " + tilePoint.x + "|" + tilePoint.y + " wurde geklickt!");
-            }
-            gameL.stepUpCounter();
-            lastMouseEvent = currentMouseEvent;
+                if (tilePoint.x != 0 && tilePoint.x != 5 && tilePoint.y != 0 && tilePoint.y != 5) {
+                    if (gameL.board[tilePoint.x - 1][tilePoint.y - 1] == 0) {
+                        tileM.mapTileNum[tilePoint.x][tilePoint.y] = curTileNum + currentPlayer;
+                        gameL.board[tilePoint.x - 1][tilePoint.y - 1] = currentPlayer;
+                        gameL.stepUpCounter();
+                        // System.out.println("Tile at " + tilePoint.x + "|" + tilePoint.y + " wurde geklickt!");
+                    }
+                }
+                lastMouseEvent = currentMouseEvent;
 
-            if(gameL.hasWinner()){
-                System.out.println(currentPlayer + " won the game ;)");
-                gameFinish = currentPlayer;
-            } else if (gameL.getCounter() == 9) {
-                gameFinish = 3;
-                System.out.println("Unentschieden :)");
-            }
+                if (gameL.hasWinner()) {
+                    System.out.println(currentPlayer + " won the game ;)");
+                    gameFinish = currentPlayer;
+                } else if (gameL.getCounter() == 9) {
+                    gameFinish = 3;
+                    System.out.println("Unentschieden :)");
+                }
 
-            if (currentPlayer == 1) {
-                currentPlayer++;
-            } else {
-                currentPlayer--;
+                if (currentPlayer == 1) {
+                    currentPlayer++;
+                } else {
+                    currentPlayer--;
+                }
             }
         }
     }
@@ -113,7 +116,7 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
-        switch (gameFinish){
+        switch (gameFinish) {
             case 0:
                 tileM.draw(g2);
                 // System.out.println("running ...");

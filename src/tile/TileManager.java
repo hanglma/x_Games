@@ -44,35 +44,6 @@ public class TileManager {
             "res/Leer/RU.png",
             "res/Rot/RUr.png",
             "res/Blau/RUb.png"
-
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\Leer.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\LO.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\LOr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\LOb.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\LM.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\LMr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\LMb.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\LU.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\LUr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\LUb.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\MO.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\MOr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\MOb.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\MM.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\MMr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\MMb.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\MU.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\MUr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\MUb.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\RO.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\ROr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\ROb.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\RM.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\RMr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\RMb.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Leer\\RU.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Rot\\RUr.png",
-//            "C:\\Users\\Martin\\IdeaProjects\\X_Games\\res\\Blau\\RUb.png"
     };
 
     public TileManager(GamePanel gp) {
