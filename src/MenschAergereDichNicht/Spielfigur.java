@@ -8,6 +8,64 @@ public class Spielfigur
     public int positionFarbe;
     public boolean schlagbar;
 
+
+    public int getPositionFeld()
+        {
+            return positionFeld;
+        }
+    public void setPositionFeld(int i)
+        {
+            positionFeld=i;
+        }
+
+
+    public int getPositionFarbe()
+        {
+            return positionFarbe;
+        }
+    public void setPositionFarbe(int i)
+        {
+            positionFarbe=i;
+        }
+
+
+
+    public boolean getSchlagbar()
+        {
+            return schlagbar;
+        }
+    public void setSchlagbar(boolean i)
+        {
+            schlagbar=i;
+        }
+
+
+    public String getFarbe()
+        {
+            return farbe;
+        }
+    public void setFarbe(String i)
+        {
+            farbe=i;
+        }
+
+
+    public int getNummer()
+        {
+            return nummer;
+        }
+    public void setNummer(int i)
+        {
+            nummer=i;
+        }
+
+
+
+
+
+
+
+
     public Spielfigur()
     {
         this.schlagbar = true;
@@ -46,6 +104,8 @@ public class Spielfigur
             {
                schlagbar = false;
             }
+
+
 
     }
 }
