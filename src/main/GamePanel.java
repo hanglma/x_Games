@@ -85,7 +85,7 @@ public class GamePanel extends JPanel implements Runnable {
 
                 // System.out.println("Tile at " + tilePoint.x + ", " + tilePoint.y + " wurde geklickt!");
 
-                if (tilePoint.x != 0 && tilePoint.x != 5 && tilePoint.y != 0 && tilePoint.y != 5) {
+                if (tilePoint.x != 0 && tilePoint.x != 4 && tilePoint.y != 0 && tilePoint.y != 4) {
                     if (gameL.board[tilePoint.x - 1][tilePoint.y - 1] == 0) {
                         tileM.mapTileNum[tilePoint.x][tilePoint.y] = curTileNum + currentPlayer;
                         gameL.board[tilePoint.x - 1][tilePoint.y - 1] = currentPlayer;
