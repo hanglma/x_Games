@@ -14,6 +14,7 @@ public class TileManager {
     GamePanel gp;
     Tile[] tiles;
     public int[][] mapTileNum;
+    public int[][] originalMap;
 
     String[] imagePaths = {
             "res/Leer/Leer.png",
@@ -114,6 +115,12 @@ public class TileManager {
                 }
             }
             br.close();
+
+            originalMap = new int[mapTileNum.length][];
+            for (int i = 0; i < mapTileNum.length; i++) {
+                originalMap[i] = mapTileNum[i].clone();
+            }
+
         } catch (Exception e){
             System.out.println("error :)");
         }
