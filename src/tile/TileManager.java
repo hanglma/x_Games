@@ -47,49 +47,49 @@ public class TileManager {
 
 
 
-            "res/Menscairgerdichnicht/Haus/Blau/B.A.png",
+            "res/Menscairgerdichnicht/Haus/Blau/B.A.png", //29
             "res/Menscairgerdichnicht/Haus/Blau/B.B.png", // 30
-            "res/Menscairgerdichnicht/Haus/Blau/B.C.png",
-            "res/Menscairgerdichnicht/Haus/Blau/B.D.png",
+            "res/Menscairgerdichnicht/Haus/Blau/B.C.png", //31
+            "res/Menscairgerdichnicht/Haus/Blau/B.D.png", //32
 
-            "res/Menscairgerdichnicht/Haus/Gelb/Gel.A.png",
-            "res/Menscairgerdichnicht/Haus/Gelb/Gel.B.png",
+            "res/Menscairgerdichnicht/Haus/Gelb/Gel.A.png", //33
+            "res/Menscairgerdichnicht/Haus/Gelb/Gel.B.png", //34
             "res/Menscairgerdichnicht/Haus/Gelb/Gel.C.png", // 35
-            "res/Menscairgerdichnicht/Haus/Gelb/Gel.D.png",
+            "res/Menscairgerdichnicht/Haus/Gelb/Gel.D.png", //36
 
-            "res/Menscairgerdichnicht/Haus/Grun/Grü.A.png",
-            "res/Menscairgerdichnicht/Haus/Grun/Grü.B.png",
-            "res/Menscairgerdichnicht/Haus/Grun/Grü.C.png",
+            "res/Menscairgerdichnicht/Haus/Grun/Grü.A.png", //37
+            "res/Menscairgerdichnicht/Haus/Grun/Grü.B.png", //38
+            "res/Menscairgerdichnicht/Haus/Grun/Grü.C.png", //39
             "res/Menscairgerdichnicht/Haus/Grun/Grü.D.png", // 40
 
-            "res/Menscairgerdichnicht/Haus/Leer/Feld0.A.png",
-            "res/Menscairgerdichnicht/Haus/Leer/Feld0.B.png",
-            "res/Menscairgerdichnicht/Haus/Leer/Feld0.C.png",
-            "res/Menscairgerdichnicht/Haus/Leer/Feld0.D.png",
+            "res/Menscairgerdichnicht/Haus/Leer/Feld0.A.png", //41
+            "res/Menscairgerdichnicht/Haus/Leer/Feld0.B.png", //42
+            "res/Menscairgerdichnicht/Haus/Leer/Feld0.C.png", //43
+            "res/Menscairgerdichnicht/Haus/Leer/Feld0.D.png", //44
 
             "res/Menscairgerdichnicht/Haus/Rot/R.A.png", //45
-            "res/Menscairgerdichnicht/Haus/Rot/R.B.png",
-            "res/Menscairgerdichnicht/Haus/Rot/R.C.png",
-            "res/Menscairgerdichnicht/Haus/Rot/R.D.png",
+            "res/Menscairgerdichnicht/Haus/Rot/R.B.png", //46
+            "res/Menscairgerdichnicht/Haus/Rot/R.C.png", //47
+            "res/Menscairgerdichnicht/Haus/Rot/R.D.png", //48
 
 
-            "res/Menscairgerdichnicht/Rand/EckLinksOben.png",
+            "res/Menscairgerdichnicht/Rand/EckLinksOben.png", //49
             "res/Menscairgerdichnicht/Rand/EckLinksUnten.png", //50
-            "res/Menscairgerdichnicht/Rand/EckRechtsOben.png",
-            "res/Menscairgerdichnicht/Rand/EckRechtsUnten.png",
+            "res/Menscairgerdichnicht/Rand/EckRechtsOben.png", //51
+            "res/Menscairgerdichnicht/Rand/EckRechtsUnten.png", //52
 
-            "res/Menscairgerdichnicht/Rand/Leeresbauteil.png",
+            "res/Menscairgerdichnicht/Rand/Leeresbauteil.png", //53
 
-            "res/Menscairgerdichnicht/Rand/RandLinks.png",
+            "res/Menscairgerdichnicht/Rand/RandLinks.png", //54
             "res/Menscairgerdichnicht/Rand/RandOben.png", //55
-            "res/Menscairgerdichnicht/Rand/RandRechts.png",
-            "res/Menscairgerdichnicht/Rand/Randunten.png",
+            "res/Menscairgerdichnicht/Rand/RandRechts.png", //56
+            "res/Menscairgerdichnicht/Rand/Randunten.png", //57
 
 
             "res/Menscairgerdichnicht/Zugfelder/Feld0.B.png",
             "res/Menscairgerdichnicht/Zugfelder/Feld0.Gel.png",
             "res/Menscairgerdichnicht/Zugfelder/Feld0.Grü.png", //60
-            "res/Menscairgerdichnicht/Zugfelder/Feld0.Leer.png",
+            "res/Menscairgerdichnicht/Zugfelder/Feld0.Leer.png", //61
             "res/Menscairgerdichnicht/Zugfelder/Feld0.R.png",
 
     };
