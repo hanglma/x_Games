@@ -1,21 +1,27 @@
 package main;
 
-public class GameLogic
-{
-    public GameLogic(){
+public class GameLogic {
+    public GameLogic() {
 
     }
 
-    private int counter=0;
-    public int getCounter()
-    {
+    private int counter = 0;
+
+    public int getCounter() {
         return counter;
     }
-    public void stepUpCounter() { counter += 1; }
+
+    public void stepUpCounter() {
+        counter += 1;
+    }
+
+    public void resetCounter() {
+        counter = 0;
+    }
 
     // 0 = empty,also leer; 1 = X; 2 = O
 
-    public final int[][] board = {{0,0,0},{0,0,0},{0,0,0}};
+    public final int[][] board = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 
 //    public boolean check(int a,int b,int c)
 //    {
