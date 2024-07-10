@@ -30,7 +30,7 @@ public class Spielfeld
         {
             Farbnum = 3;
         }
-        if(farb == "grün")
+        if(farb == "gruen")
         {
             Farbnum = 4;
         }else
