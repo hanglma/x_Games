@@ -43,7 +43,55 @@ public class TileManager {
             "res/Blau/RMb.png",
             "res/Leer/RU.png",
             "res/Rot/RUr.png",
-            "res/Blau/RUb.png"
+            "res/Blau/RUb.png", // 28
+
+
+
+            "res/Menscairgerdichnicht/Haus/Blau/B.A.png",
+            "res/Menscairgerdichnicht/Haus/Blau/B.B.png", // 30
+            "res/Menscairgerdichnicht/Haus/Blau/B.C.png",
+            "res/Menscairgerdichnicht/Haus/Blau/B.D.png",
+
+            "res/Menscairgerdichnicht/Haus/Gelb/Gel.A.png",
+            "res/Menscairgerdichnicht/Haus/Gelb/Gel.B.png",
+            "res/Menscairgerdichnicht/Haus/Gelb/Gel.C.png", // 35
+            "res/Menscairgerdichnicht/Haus/Gelb/Gel.D.png",
+
+            "res/Menscairgerdichnicht/Haus/Grun/Grü.A.png",
+            "res/Menscairgerdichnicht/Haus/Grun/Grü.B.png",
+            "res/Menscairgerdichnicht/Haus/Grun/Grü.C.png",
+            "res/Menscairgerdichnicht/Haus/Grun/Grü.D.png", // 40
+
+            "res/Menscairgerdichnicht/Haus/Leer/Feld0.A.png",
+            "res/Menscairgerdichnicht/Haus/Leer/Feld0.B.png",
+            "res/Menscairgerdichnicht/Haus/Leer/Feld0.C.png",
+            "res/Menscairgerdichnicht/Haus/Leer/Feld0.D.png",
+
+            "res/Menscairgerdichnicht/Haus/Rot/R.A.png", //45
+            "res/Menscairgerdichnicht/Haus/Rot/R.B.png",
+            "res/Menscairgerdichnicht/Haus/Rot/R.C.png",
+            "res/Menscairgerdichnicht/Haus/Rot/R.D.png",
+
+
+            "res/Menscairgerdichnicht/Rand/EckLinksOben.png",
+            "res/Menscairgerdichnicht/Rand/EckLinksUnten.png", //50
+            "res/Menscairgerdichnicht/Rand/EckRechtsOben.png",
+            "res/Menscairgerdichnicht/Rand/EckRechtsUnten.png",
+
+            "res/Menscairgerdichnicht/Rand/Leeresbauteil.png",
+
+            "res/Menscairgerdichnicht/Rand/RandLinks.png",
+            "res/Menscairgerdichnicht/Rand/RandOben.png", //55
+            "res/Menscairgerdichnicht/Rand/RandRechts.png",
+            "res/Menscairgerdichnicht/Rand/Randunten.png",
+
+
+            "res/Menscairgerdichnicht/Zugfelder/Feld0.B.png",
+            "res/Menscairgerdichnicht/Zugfelder/Feld0.Gel.png",
+            "res/Menscairgerdichnicht/Zugfelder/Feld0.Grü.png", //60
+            "res/Menscairgerdichnicht/Zugfelder/Feld0.Leer.png",
+            "res/Menscairgerdichnicht/Zugfelder/Feld0.R.png",
+
     };
 
     public TileManager(GamePanel gp) {
