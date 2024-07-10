@@ -90,7 +90,15 @@ public class TileManager {
             "res/Menscairgerdichnicht/Zugfelder/Feld0.Gel.png",
             "res/Menscairgerdichnicht/Zugfelder/Feld0.Grü.png", //60
             "res/Menscairgerdichnicht/Zugfelder/Feld0.Leer.png", //61
-            "res/Menscairgerdichnicht/Zugfelder/Feld0.R.png",
+            "res/Menscairgerdichnicht/Zugfelder/Feld0.R.png", //Alle Zahlen sin eins zu hoch
+
+
+            "res/Menscairgerdichnicht/Wuefel/W.1.png", //62
+            "res/Menscairgerdichnicht/Wuefel/W.2.png", //63
+            "res/Menscairgerdichnicht/Wuefel/W.3.png", //64
+            "res/Menscairgerdichnicht/Wuefel/W.4.png", //65
+            "res/Menscairgerdichnicht/Wuefel/W.5.png", //66
+            "res/Menscairgerdichnicht/Wuefel/W.6.png", //67
 
     };
 
@@ -139,7 +147,7 @@ public class TileManager {
     public void loadMap(){
 
         try{
-            InputStream inputS = getClass().getResourceAsStream("map.txt");
+            InputStream inputS = getClass().getResourceAsStream("menschBoard.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(inputS));
 
             int col = 0;
