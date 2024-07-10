@@ -3,10 +3,21 @@ package MenschAergereDichNicht;
 public class Spielfigur
 {
     public String farbe;
-    public int nummer;
     public int positionFeld;
     public int positionFarbe;
     public boolean schlagbar;
+    public static int anzahlFiguren;
+
+
+
+    public int getAnzahlFiguren()
+    {
+        return anzahlFiguren;
+    }
+    public void setAnzahlFiguren(int i)
+    {
+        anzahlFiguren=i;
+    }
 
 
     public int getPositionFeld()
@@ -50,14 +61,7 @@ public class Spielfigur
         }
 
 
-    public int getNummer()
-        {
-            return nummer;
-        }
-    public void setNummer(int i)
-        {
-            nummer=i;
-        }
+
 
 
 
@@ -72,13 +76,13 @@ public class Spielfigur
     }
 
 
-    public Spielfigur(String farbe, int nummer, int positionFeld, int positionFarbe)
+    public Spielfigur(String farbe, int positionFeld, int positionFarbe)
     {
         this.farbe = farbe;
-        this.nummer = nummer;
         this.positionFeld = positionFeld;
         this.positionFarbe = positionFarbe;
         this.schlagbar = true;
+        anzahlFiguren = 0;
     }
 
 
