@@ -6,35 +6,35 @@ import java.util.Map;
 public class Spielfeld
 {
     public Map<Integer, Integer> spielfeldAll;
-    public int[][] SpielfeldFig;
 
     public boolean feststellen;
 
-    public int x;
-    public int i, e;
+    public int Feldall, Farbnum;
+    public int i, l, pos, farbp;
+    public String farb;
 
-    public Spielfeld()
+    public Spielfeld(int Feldall, String farb)
     {
-        for(i = 0; i < 40; i++)
+        this.farb = farb;
+        this.Feldall = Feldall;
+
+        if(farb == "rot")
         {
-            if(e == positionFeld)
-            {
-            SpielfeldAll.put(i, e);
-            }
+            Farbnum = 1;
         }
+        if(farb == "blau")
+        {
+            Farbnum = 2;
+        }
+        if(farb == "gelb")
+        {
+            Farbnum = 3;
+        }
+        if(farb == "grün")
+        {
+            Farbnum = 4;
+        }
+        spielfeldAll.put(Feldall, Farbnum);
     }
-
-    /*public Spielfeld()
-    {
-        int e, n, m;
-
-        for(e = 0; e < SpielfeldAll.length; e++)
-        {
-
-        }
-
-    }*/
-
-
 
 }
