@@ -27,18 +27,68 @@ public class GameLogic
                 {
                     figurenRot[anzahlRot]=new SpielfigurRot();
                     anzahlRot++;
+                    if ("Gegner auf Feld")                          //noch zu bearbeiten
+                    {
+                        "schmeißen"
+                    }
+                    else
+                    {
+                        spielzugAusfuehren(farbe);
+                    }
                 }
            }
            if (farbe=="gelb")
            {
-
+               if (anzahlGelb==0)
+               {
+                    figurenGelb[anzahlGelb]=new SpielfigurGelb();
+                    anzahlGelb++;
+                    if ("Gegner auf Feld")                          //noch zu bearbeiten
+                    {
+                        "schmeißen"
+                    }
+                    else
+                    {
+                        spielzugAusfuehren(farbe);
+                    }
+               }
            }
            if (farbe=="gruen")
            {
+               if (anzahlGruen==0)
+               {
+                   figurenGruen[anzahlGruen]=new SpielfigurGruen();
+                   anzahlGruen++;
+                   if ("Gegner auf Feld")                          //noch zu bearbeiten
+                   {
+                       "schmeißen"
+                   }
+                   else
+                   {
+                       spielzugAusfuehren(farbe);
+                   }
+               }
 
            }
-           else
+           if (farbe=="blau")
            {
+               if (anzahlBlau==0)
+               {
+                   figurenBlau[anzahlBlau]=new SpielfigurBlau();
+                   anzahlBlau++;
+                   if ("Gegner auf Feld")                          //noch zu bearbeiten
+                   {
+                       "schmeißen"
+                   }
+                   else
+                   {
+                       spielzugAusfuehren(farbe);
+                   }
+               }
+               else
+               {
+
+               }
 
            }
        }
