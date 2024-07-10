@@ -4,10 +4,13 @@ import java.util.Random;
 
 public class Wuerfel
 {
+    public static int  Wuerfelzahl;
     public Wuerfel()
     {
+        Wuerfelzahl = 0;
+
     }
-        public static void wuerfeln()
+        public static int wuerfeln()
         {
             int min = 1;
             int max = 5;
@@ -15,7 +18,8 @@ public class Wuerfel
             Random random = new Random();
 
             int x = random.nextInt(max + min) + min;
-            System.out.println(x);
+            Wuerfelzahl= x;
+            return Wuerfelzahl;
         }
 }
 // import MenschAergereDichNicht.Wuerfel;

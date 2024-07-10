@@ -2,10 +2,10 @@ package MenschAergereDichNicht;
 
 public class SpielfigurRot extends Spielfigur
 {
-    public SpielfigurRot(int nummer)
+    public SpielfigurRot()
     {
-        super("rot",nummer,0,0);
-        this.nummer = nummer;
+        super("rot",0,0);
+
 
     }
 
