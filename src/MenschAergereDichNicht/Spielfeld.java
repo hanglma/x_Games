@@ -33,6 +33,9 @@ public class Spielfeld
         if(farb == "grün")
         {
             Farbnum = 4;
+        }else
+        {
+            Farbnum = 0;
         }
         spielfeldAll.put(Feldall, Farbnum);
     }
