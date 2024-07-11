@@ -2,21 +2,22 @@ package main;
 
 import tile.TileManager;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 
 public class GamePanel extends JPanel implements Runnable {
 
     // SCREEN SETTINGS
     final int originalTileSize = 16;
-    final int scale = 3;
+    final int scale = 8;
 
     public final int tileSize = originalTileSize * scale;
-    public final int maxScreenCol = 17;
-    public final int getMaxScreenRow = 15;
-    final int screenWidth = tileSize * maxScreenCol;
-    final int screenHeight = tileSize * getMaxScreenRow;
+    public final int maxScreenCol = 5;
+    public final int getMaxScreenRow = 5;
+    public final int screenWidth = tileSize * maxScreenCol;
+    public final int screenHeight = tileSize * getMaxScreenRow;
 
     // FPS
     int FPS = 60;
@@ -25,8 +26,9 @@ public class GamePanel extends JPanel implements Runnable {
     KeyHandler keyH = new KeyHandler();
     MouseHandler mouseH = new MouseHandler();
     TileManager tileM = new TileManager(this);
+    gameUI gameU = new gameUI(this);
     GameLogic gameL = new GameLogic();
-
+    JButton playAgainButton;
 
     public GamePanel() {
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -35,6 +37,27 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyH);
         this.addMouseListener(mouseH);
         this.setFocusable(true);
+
+        this.setLayout(new GridBagLayout()); // Set GridBagLayout for the panel
+
+
+        // Create the Play Again button
+        playAgainButton = new JButton("Play Again");
+        playAgainButton.addActionListener(e -> restartGame());
+
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.HORIZONTAL; // Center horizontally
+        constraints.gridy = 1; // Place button in the second row (below game over text)
+
+        // Add button with constraints
+        this.add(playAgainButton, constraints);
+        playAgainButton.setPreferredSize(new Dimension(2 * tileSize, tileSize/2));
+        playAgainButton.setFont(new Font("Montserrat", Font.BOLD, tileSize/3));
+
+
+        // Initially, the button is not visible
+        playAgainButton.setVisible(false);
+//        add(playAgainButton, BorderLayout.SOUTH);
     }
 
     public void startGameThread() {
@@ -69,11 +92,11 @@ public class GamePanel extends JPanel implements Runnable {
     int currentPlayer = 1;
     MouseEvent lastMouseEvent = null;
     MouseEvent currentMouseEvent;
-    int gameFinish = 0;
+    int gameState = 0;
 
     public void update() {
 
-        if(gameFinish == 0) {
+        if(gameState == 0) {
 
             currentMouseEvent = mouseH.mouseClicked;
 
@@ -97,9 +120,9 @@ public class GamePanel extends JPanel implements Runnable {
 
                 if (gameL.hasWinner()) {
                     System.out.println(currentPlayer + " won the game ;)");
-                    gameFinish = currentPlayer;
+                    gameState = currentPlayer;
                 } else if (gameL.getCounter() == 9) {
-                    gameFinish = 3;
+                    gameState = 3;
                     System.out.println("Unentschieden :)");
                 }
 
@@ -116,22 +139,29 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D) g;
-        switch (gameFinish) {
+
+        switch (gameState) {
             case 0:
                 tileM.draw(g2);
                 // System.out.println("running ...");
                 break;
             case 1:
                 setBackground(Color.RED);
-                // System.out.println("red");
+
+                gameU.drawCenteredString(g2,"RED WINS ;)","Montserrat", 60);
+                playAgainButton.setVisible(true);
                 break;
             case 2:
                 setBackground(Color.blue);
                 // System.out.println("blue");
+                gameU.drawCenteredString(g2,"BLUE WINS ;)","Montserrat", 60);
+                playAgainButton.setVisible(true);
                 break;
             case 3:
                 setBackground(Color.GRAY);
                 // System.out.println("----");
+                gameU.drawCenteredString(g2,"Unentschieden :-)","Montserrat", 60);
+                playAgainButton.setVisible(true);
                 break;
         }
     }
@@ -141,4 +171,34 @@ public class GamePanel extends JPanel implements Runnable {
         int tileY = Math.floorDiv(y, tileSize);
         return new Point(tileX, tileY);
     }
+
+    // Method to restart the game
+    private void restartGame() {
+        gameState = 0;
+        currentPlayer = 1;
+        playAgainButton.setVisible(false);
+        gameL.resetCounter();
+
+        // Reset the mapTileNum array to its original state
+        for (int i = 0; i < tileM.mapTileNum.length; i++) {
+            System.arraycopy(tileM.originalMap[i], 0, tileM.mapTileNum[i], 0, tileM.originalMap[i].length);
+        }
+
+        // Reset the game state here
+        for (int[] row : gameL.board) {
+            Arrays.fill(row, 0);
+        }
+
+        // Debug
+        for (int[] row : gameL.board) {
+            System.out.println(Arrays.toString(row));
+        }
+        for(int[] row: tileM.mapTileNum){
+            System.out.println(Arrays.toString(row));
+        }
+
+        repaint();
+    }
 }
+
+

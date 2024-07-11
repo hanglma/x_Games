@@ -10,7 +10,7 @@ public class MouseHandler implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e)
     {
-        mouseClicked = e;
+
 
         // System.out.println( "X-Wert: " + e.getX() + " Y-Wert: " + e.getY());
     }
@@ -31,7 +31,7 @@ public class MouseHandler implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-
+        mouseClicked = e;
     }
 
     @Override
