@@ -9,12 +9,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.file.*;
+import java.util.Arrays;
 
 public class TileManager {
     GamePanel gp;
     Tile[] tiles;
     public int[][] mapTileNum;
     public int[][] originalMap;
+    private String mapFile = "whiteMap.txt";
 
     String[] imagePaths = {
             "res/Leer/Leer.png",
@@ -148,7 +150,7 @@ public class TileManager {
     public void loadMap(){
 
         try{
-            InputStream inputS = getClass().getResourceAsStream("menschBoard.txt");
+            InputStream inputS = getClass().getResourceAsStream(mapFile);
             BufferedReader br = new BufferedReader(new InputStreamReader(inputS));
 
             int col = 0;
@@ -201,6 +203,30 @@ public class TileManager {
                 row++;
                 y += gp.tileSize;
             }
+        }
+    }
+
+    public void switchMap(int map){
+        switch (map){
+            case 0:
+                gp.setScreenSizeTiles(5,5, 8);
+                mapTileNum = new int[gp.maxScreenCol][gp.getMaxScreenRow];
+                mapFile = "whiteMap.txt";
+                loadMap();
+                break;
+            case 1:
+                gp.setScreenSizeTiles(5,5, 8);
+                mapTileNum = new int[gp.maxScreenCol][gp.getMaxScreenRow];
+                mapFile = "map.txt";
+                loadMap();
+                break;
+
+            case 2:
+                gp.setScreenSizeTiles(17,15, 3);
+                mapTileNum = new int[gp.maxScreenCol][gp.getMaxScreenRow];
+                mapFile = "menschBoard.txt";
+                loadMap();
+                break;
         }
     }
 }

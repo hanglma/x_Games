@@ -1,5 +1,4 @@
 package main;
-import java.util.Hashtable;
 
 import javax.swing.JFrame;
 
@@ -12,7 +11,7 @@ public class Main
         window.setResizable(false);
         window.setTitle("2D Game");
 
-        GamePanel gamePanel = new GamePanel();
+        GamePanel gamePanel = new GamePanel(window);
         window.add(gamePanel);
 
         window.pack();
