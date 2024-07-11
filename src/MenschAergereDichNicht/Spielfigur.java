@@ -86,7 +86,7 @@ public class Spielfigur
     }
 
 
-    public void ziehen( int x)
+    public void ziehen(int x)
     {
         int NewPositionFarbe;
         int NewPositionFeld;
