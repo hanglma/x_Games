@@ -207,23 +207,23 @@ public class GamePanel extends JPanel implements Runnable {
                                 gameL.board[tilePoint.x - 1][tilePoint.y - 1] = currentPlayer;
                                 gameL.stepUpCounter();
                                 // System.out.println("Tile at " + tilePoint.x + "|" + tilePoint.y + " wurde geklickt!");
+
+                                if (gameL.hasWinner()) {
+                                    System.out.println(currentPlayer + " won the game ;)");
+                                    tictactoeState = currentPlayer;
+                                } else if (gameL.getCounter() == 9) {
+                                    tictactoeState = 3;
+                                    System.out.println("Unentschieden :)");
+                                }
+
+                                if (currentPlayer == 1) {
+                                    currentPlayer++;
+                                } else {
+                                    currentPlayer--;
+                                }
                             }
                         }
                         lastMouseEvent = currentMouseEvent;
-
-                        if (gameL.hasWinner()) {
-                            System.out.println(currentPlayer + " won the game ;)");
-                            tictactoeState = currentPlayer;
-                        } else if (gameL.getCounter() == 9) {
-                            tictactoeState = 3;
-                            System.out.println("Unentschieden :)");
-                        }
-
-                        if (currentPlayer == 1) {
-                            currentPlayer++;
-                        } else {
-                            currentPlayer--;
-                        }
                     }
                 }
 
